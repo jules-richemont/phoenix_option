@@ -1,4 +1,5 @@
 function [S] = Simulate_Underlying_Shared(S0, r, sigma, T, N, g)
+    % simulate underlying with predefined random ran
     % - g: shared random numbers (1 x N)
     % Output:
     % - S: vector of simulated prices (1 x (N+1))
