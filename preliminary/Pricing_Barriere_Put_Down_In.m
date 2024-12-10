@@ -1,0 +1,18 @@
+function[price] = Pricing_Barriere_Put_Down_In(Nmc, S0, K, r, sigma, B, T)
+
+    % Initialize the vector of payoffs
+    payoff = zeros(1, Nmc);
+    for n = 1:Nmc
+        % Simulate the underlying asset price
+        S = Simulate_Underlying(S0, r, sigma, T, 100);
+        % Check if the barrier is crossed : if the option is activated
+        if min(S) < B
+            % Compute the payoff
+            payoff(n) = max(K - S(end), 0);
+        else
+            payoff(n) = 0;
+        end
+    end
+    % Compute the price
+    price = mean(payoff)*exp(-r*T);
+end
