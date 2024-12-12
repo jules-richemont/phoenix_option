@@ -15,13 +15,17 @@ function [V_Put, V_Perf] = Pricings_Phoenix(S0_values, N, T, r, sigma, delta_t, 
         Payoff_Put = zeros(N, 1);
         Payoff_Perf = zeros(N, 1);
 
+        timesteps = T / delta_t;
+        % Version 1 
+        S = Simulate_Trajectories(S0, r, sigma, T, timesteps, N);
+
         % Simulate trajectories and compute payoffs
         for n = 1:N
-            S = Simulate_Underlying(S0, r, sigma, T, T / delta_t); % Single trajectory
+            % S = Simulate_Underlying(S0, r, sigma, T, T / delta_t); % Single trajectory
 
             % Compute Payoffs
-            Payoff_Put(n) = Compute_Put_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t);
-            Payoff_Perf(n) = Compute_Perf_Payoff(S, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t);
+            Payoff_Put(n) = Compute_Put_Payoff(S(n,:), K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t);
+            Payoff_Perf(n) = Compute_Perf_Payoff(S(n,:), Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t);
         end
 
         % Average payoffs
