@@ -1,4 +1,6 @@
-function Payoff = Compute_Perf_Payoff(S, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t)
+function Payoff = Compute_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t, put_or_perf)
+    % if put_or_perf == 1 : put
+    % if put_or_perf == 0 : perf
     timesteps = length(S) - 1;
     t = delta_t * (1:timesteps);
     PV = 0; % Présent Value
@@ -27,8 +29,12 @@ function Payoff = Compute_Perf_Payoff(S, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put,
         elseif S_N > B_Put && S_N < B_Y
             PV = PV + Pi0 * exp(-r * T);
         elseif S_N <= B_Put
-            % Payoff Performance
-            Payoff = S_N / S(1);
+            % Payoff Put
+            if put_or_perf == 1
+                Payoff = max((K - S_N) / S(1), 0);
+            else
+                Payoff = S_N / S(1);
+            end
             PV = PV + Payoff * exp(-r * T);
         end
     end
