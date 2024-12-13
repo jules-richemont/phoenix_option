@@ -20,10 +20,10 @@ coeff_ph_2 = 0.08;
 coeff_y_2 = 0.05;
 
 % Pricing cases
-V_Case1_Put = Pricings_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_1, coeff_y_1, 1);
-V_Case1_Perf = Pricings_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_1, coeff_y_1, 0);
-V_Case2_Put = Pricings_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_2, coeff_y_2, 1);
-V_Case2_Perf = Pricings_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_2, coeff_y_2, 0);
+V_Case1_Put = Pricing_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_1, coeff_y_1, 1);
+V_Case1_Perf = Pricing_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_1, coeff_y_1, 0);
+V_Case2_Put = Pricing_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_2, coeff_y_2, 1);
+V_Case2_Perf = Pricing_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_Y, B_Put, coeff_ph_2, coeff_y_2, 0);
 
 
 % Plot results
