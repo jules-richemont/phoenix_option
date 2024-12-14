@@ -38,7 +38,7 @@ for idx = 1:length(sigma_values)
     % Simulate asset paths
     Z = randn(N, timesteps);
     S = zeros(N, timesteps);
-    S(:,1) = S0 * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
+    S(:,1) = S0;
     for i = 2:timesteps
         S(:,i) = S(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
     end
@@ -138,7 +138,7 @@ for idx = 1:length(T_values)
     % Simulate asset paths
     Z = randn(N, timesteps);
     S = zeros(N, timesteps);
-    S(:,1) = S0 * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
+    S(:,1) = S0;
     for i = 2:timesteps
         S(:,i) = S(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
     end
@@ -240,7 +240,7 @@ for idx = 1:length(r_values)
     % Simulate asset paths
     Z = randn(N, timesteps);
     S = zeros(N, timesteps);
-    S(:,1) = S0 * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
+    S(:,1) = S0;
     for i = 2:timesteps
         S(:,i) = S(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
     end

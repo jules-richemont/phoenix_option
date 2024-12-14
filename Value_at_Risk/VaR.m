@@ -19,12 +19,8 @@ C_Ph = 0.1 * S0;   % 10% of S0
 C_Y = 0.05 * S0;   % 5% of S0
 
 % Simulate asset paths
-Z = randn(N, timesteps);
-S = zeros(N, timesteps);
-S(:,1) = S0 * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
-for i = 2:timesteps
-    S(:,i) = S(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
-end
+% Simulate asset paths
+S = Simulate_Trajectories(S0, r, sigma, delta_t, timesteps, N);
 
 % Time vector
 t = delta_t * (1:timesteps);
@@ -146,16 +142,4 @@ for idx = 1:length(alphas)
     [~, alpha_idx] = min(abs(F_Perf - alphas(idx)));
     plot(Losses_Perf_sorted(alpha_idx), F_Perf(alpha_idx), 'ko', 'MarkerFaceColor', 'k');
     text(Losses_Perf_sorted(alpha_idx), F_Perf(alpha_idx), sprintf(' VaR at %.0f%%: %.4f', alphas(idx)*100, Losses_Perf_sorted(alpha_idx)), 'VerticalAlignment', 'bottom');
-end
-
-% Function to calculate quantile using ordering algorithm
-function x_alpha = Quantile(X, alpha)
-    N_mc = length(X);
-    X_sorted = sort(X);
-    k = floor(N_mc * alpha);
-    if k == 0
-        x_alpha = X_sorted(1);
-    else
-        x_alpha = X_sorted(k);
-    end
 end
