@@ -6,7 +6,7 @@ T = 10;             % Maturity in years
 delta_t = 1;        % Observation frequency in years
 sigma = 0.3;        % Volatility
 r = 0.02;           % Risk-free rate
-N = 10000;         % Number of simulations
+N = 100000;         % Number of simulations
 timesteps = T / delta_t;
 S0_values = 80:1:120; % S0 varying from 80 to 120
 
