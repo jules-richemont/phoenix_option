@@ -39,7 +39,7 @@ for idx = 1:length(S0_values)
     
     %% Compute V(S0 + h)
     S_plus = zeros(N, timesteps);
-    S_plus(:,1) = (S0 + h) * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
+    S_plus(:,1) = (S0 + h);
     for i = 2:timesteps
         S_plus(:,i) = S_plus(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
     end
@@ -47,7 +47,7 @@ for idx = 1:length(S0_values)
     
     %% Compute V(S0 - h)
     S_minus = zeros(N, timesteps);
-    S_minus(:,1) = (S0 - h) * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
+    S_minus(:,1) = (S0 - h);
     for i = 2:timesteps
         S_minus(:,i) = S_minus(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
     end
@@ -55,7 +55,7 @@ for idx = 1:length(S0_values)
     
     %% Compute V(S0)
     S = zeros(N, timesteps);
-    S(:,1) = S0 * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
+    S(:,1) = S0;
     for i = 2:timesteps
         S(:,i) = S(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
     end
@@ -155,7 +155,7 @@ grid on;
 %% Function to simulate asset paths
 function S = simulateAssetPaths(S0, sigma, r, delta_t, N, timesteps, Z)
     S = zeros(N, timesteps);
-    S(:,1) = S0 * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,1));
+    S(:,1) = S0;
     for i = 2:timesteps
         S(:,i) = S(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) .* Z(:,i));
     end

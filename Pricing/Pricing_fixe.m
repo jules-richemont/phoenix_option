@@ -39,7 +39,7 @@ for idx = 1:length(S0_values)
     % Simulate N trajectories of S_t
     Z = randn(N, timesteps); % N x timesteps matrix of standard normal random variables
     S = zeros(N, timesteps);
-    S(:,1) = S0 * exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) * Z(:,1));
+    S(:,1) = S0;
     for i = 2:timesteps
         S(:,i) = S(:,i-1) .* exp((r - 0.5 * sigma^2) * delta_t + sigma * sqrt(delta_t) * Z(:,i));
     end
