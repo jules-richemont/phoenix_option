@@ -1,24 +1,24 @@
 % main.m
 
 % Parameters
-Pi0 = 1;            % Nominal value (100%)
-T = 10;             % Maturity in years
-delta_t = 1;        % Observation frequency in years
-sigma = 0.3;        % Volatility
-r = 0.02;           % Risk-free rate
-Nmc = 10000;         % Number of simulations
+Pi0 = 1;            
+T = 10;             
+delta_t = 1;        
+sigma = 0.3;        
+r = 0.02;           
+Nmc = 10000;    
 N = 100;            
-S0_values = 0:0.5:150; % S0 varying from 80 to 120
+S0_values = 0:0.5:150; 
 
 
 % ---------- Fixed barriers
 % Barriers
-B_Ph_1 = 120;    % Fixed autocall barrier
-B_Y_1 = 80;      % Fixed coupon barrier
-B_Put_1 = 70;    % Fixed put barrier
-B_Ph_2 = 100;    % Fixed autocall barrier
-B_Y_2 = 70;      % Fixed coupon barrier
-B_Put_2 = 60;    % Fixed put barrier
+B_Ph_1 = 120; % Autocall barrier
+B_Y_1 = 80;% Coupon barrier
+B_Put_1 = 70;% Put barrier   
+B_Ph_2 = 100;%     
+B_Y_2 = 70;      
+B_Put_2 = 60;    
 coeff_ph_1 = 0.1;
 coeff_y_1 = 0.05;
 coeff_ph_2 = 0.08;
@@ -43,14 +43,14 @@ Graph_Pricing(S0_values, V_Case1_Put, V_Case1_Perf, V_Case2_Put, V_Case2_Perf, n
 % ---------- Proportionnal barriers
 
 % Parameters
-Pi0 = 1;            % Nominal value (100%)
-T = 10;             % Maturity in years
-delta_t = 1;        % Observation frequency in years
-sigma = 0.3;        % Volatility
-r = 0.02;           % Risk-free rate
-Nmc = 100000;         % Number of simulations
+Pi0 = 1;            
+T = 10;             
+delta_t = 1;       
+sigma = 0.3;    
+r = 0.02;        
+Nmc = 10000;        
 N = 100;            
-S0_values = 80:1:120; % S0 varying from 80 to 120
+S0_values = 80:1:120;
 % Barrier
 B_Ph_coeff_1 = 1.2;   
 B_Y_coeff_1 = 0.8;     
