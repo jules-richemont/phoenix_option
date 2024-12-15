@@ -1,31 +1,28 @@
 function Payoff = Compute_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t, put_or_perf)
-    % Initialisation
-    timesteps = length(S) - 1; % Nombre de points moins le point initial
-    t = delta_t * (0:timesteps) / timesteps * T; % Correspondance des pas de temps
-    PV = 0; % Valeur actuelle des flux
+    % Initialization
+    timesteps = length(S) - 1; % Number of points minus the initial point
+    t = delta_t * (0:timesteps) / timesteps * T; % Time step correspondence
+    PV = 0; % Present value of cash flows
     autocall = false;
 
-    % Déterminer les indices des dates d'observation
-    observation_date = round(linspace(1, length(S), T / delta_t + 1)); % Espacement uniforme
+    % Determine the indices of the observation dates
+    observation_date = round(linspace(1, length(S), T / delta_t + 1)); % Uniform spacing
 
-    % Boucle sur les dates d'observation
+    % Loop over the observation dates
     for i = observation_date
-        fprintf('i: %d\n', i);
         if S(i) > B_Ph
-            % Autocall déclenché
+            % Autocall triggered
             PV = (Pi0 + C_Ph) * exp(-r * t(i));
             autocall = true;
-            fprintf('time: %d\n', t(i));
             break;
         elseif S(i) >= B_Y && S(i) <= B_Ph
-            % Paiement d’un coupon
+            % Coupon payment
             PV = PV + C_Y * exp(-r * t(i));
-            fprintf('time: %d\n', t(i));
         end
     end
 
-    if ~autocall % If the autocall is not triggered, ie the autocall barrier is not crossed
-        % Payoff à maturité
+    if ~autocall % If the autocall is not triggered, i.e., the autocall barrier is not crossed
+        % Payoff at maturity
         S_N = S(end);
         if S_N > B_Ph
             PV = PV + (Pi0 + C_Ph) * exp(-r * T);
@@ -34,7 +31,7 @@ function Payoff = Compute_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, d
         elseif S_N > B_Put && S_N < B_Y
             PV = PV + Pi0 * exp(-r * T);
         elseif S_N <= B_Put
-            % Payoff Put
+            % Put Payoff
             if put_or_perf == 1
                 Payoff = max((K - S_N) / S(1), 0);
             else
@@ -44,5 +41,5 @@ function Payoff = Compute_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, d
         end
     end
 
-    Payoff = PV; % Renvoyer la valeur finale actualisée
+    Payoff = PV; % Return the final discounted value
 end
