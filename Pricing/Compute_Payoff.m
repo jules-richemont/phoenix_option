@@ -1,21 +1,26 @@
 function Payoff = Compute_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t, put_or_perf)
-    % if put_or_perf == 1 : put
-    % if put_or_perf == 0 : perf
-    timesteps = length(S) - 1;
-    t = delta_t * (1:timesteps);
-    PV = 0; % Present Value
+    % Initialisation
+    timesteps = length(S) - 1; % Nombre de points moins le point initial
+    t = delta_t * (0:timesteps) / timesteps * T; % Correspondance des pas de temps
+    PV = 0; % Valeur actuelle des flux
     autocall = false;
 
-    % Boucle sur les barrières intermédiaires
-    for i = 1:timesteps
+    % Déterminer les indices des dates d'observation
+    observation_date = round(linspace(1, length(S), T / delta_t + 1)); % Espacement uniforme
+
+    % Boucle sur les dates d'observation
+    for i = observation_date
+        fprintf('i: %d\n', i);
         if S(i) > B_Ph
             % Autocall déclenché
             PV = (Pi0 + C_Ph) * exp(-r * t(i));
             autocall = true;
-            break; % We stop the ireration as the autocall is triggered
+            fprintf('time: %d\n', t(i));
+            break;
         elseif S(i) >= B_Y && S(i) <= B_Ph
-            % Paiment of the coupon
+            % Paiement d’un coupon
             PV = PV + C_Y * exp(-r * t(i));
+            fprintf('time: %d\n', t(i));
         end
     end
 
