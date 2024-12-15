@@ -1,6 +1,6 @@
 function[] = Graph_Pricing_barriere_Put_Down_In(Nmc, K, r, sigma, B, T, S_min, S_max, N)
     
-    % COmpute the graph S_0 -> V(t=0, S_0)
+    % COmpute the graph 
     S0 = linspace(S_min, S_max, 100);
     price = zeros(1, 100);
     price_put = zeros(1, 100);

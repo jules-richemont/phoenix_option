@@ -7,7 +7,7 @@ function Graph_Delta(Nmc, K, r, sigma, B, T, S_min, S_max, h)
         Delta_values(i) = Compute_Delta(Nmc, S0, K, r, sigma, B, T, h);
     end
     
-    % Tracer le graphe
+    % Plot the graph
     figure;
     plot(S0_values, Delta_values);
     title('Delta vs S_0 for Down-and-In Put Option');

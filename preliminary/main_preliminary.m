@@ -23,13 +23,13 @@ Graph_Pricing_barriere_Put_Down_In(Nmc, K, r, sigma, B, T, S_min, S_max, N);
 
 % Parameters
 Nmc = 10000;
-S0 = 100; % Current asset price
-K = 100; % Strike price
-r = 0.05; % Risk-free rate
-sigma = 0.2; % Volatility
-T = 1; % Maturity
-B = 90; % Barrier level
-h = 0.1; % Step size for Delta computation
+S0 = 100;
+K = 100;
+r = 0.05;
+sigma = 0.2;
+T = 1;
+B = 90;
+h = 0.1;
 
 % Compute Delta
 Delta = Compute_Delta(Nmc, S0, K, r, sigma, B, T, h);
@@ -37,7 +37,7 @@ Delta = Compute_Delta(Nmc, S0, K, r, sigma, B, T, h);
 disp(['Delta = ', num2str(Delta)]);
 
 % Graph Delta 
-S_min = 50; % Minimum S0 for the plot
-S_max = 200; % Maximum S0 for the plot
+S_min = 50; 
+S_max = 200; 
 
 Graph_Delta(Nmc, K, r, sigma, B, T, S_min, S_max, h);
