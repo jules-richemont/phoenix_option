@@ -6,8 +6,8 @@ T = 5;             % Maturity in years
 delta_t = 1;        % Observation frequency in years
 sigma = 0.3;        % Volatility
 r = 0.02;           % Risk-free rate
-Nmc = 100000;         % Number of simulations
-timesteps = T / delta_t;  % Number of timesteps
+Nmc = 1000;         % Number of simulations
+N = 100;            
 S0_values = 80:1:120; % S0 varying from 80 to 120
 
 
@@ -25,10 +25,10 @@ coeff_ph_2 = 0.08;
 coeff_y_2 = 0.05;
 not_proportionnal = 0;
 % Pricing cases
-V_Case1_Put = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_1, B_Y_1, B_Put_1, coeff_ph_1, coeff_y_1, 1, not_proportionnal);
-V_Case1_Perf = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_1, B_Y_1, B_Put_1, coeff_ph_1, coeff_y_1, 0, not_proportionnal);
-V_Case2_Put = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_2, B_Y_2, B_Put_2, coeff_ph_2, coeff_y_2, 1, not_proportionnal);
-V_Case2_Perf = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_2, B_Y_2, B_Put_2, coeff_ph_2, coeff_y_2, 0, not_proportionnal);
+V_Case1_Put = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_1, B_Y_1, B_Put_1, coeff_ph_1, coeff_y_1, 1, not_proportionnal, N);
+V_Case1_Perf = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_1, B_Y_1, B_Put_1, coeff_ph_1, coeff_y_1, 0, not_proportionnal, N);
+V_Case2_Put = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_2, B_Y_2, B_Put_2, coeff_ph_2, coeff_y_2, 1, not_proportionnal, N);
+V_Case2_Perf = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_2, B_Y_2, B_Put_2, coeff_ph_2, coeff_y_2, 0, not_proportionnal, N);
 
 Graph_Pricing(S0_values, V_Case1_Put, V_Case1_Perf, V_Case2_Put, V_Case2_Perf);
 
@@ -49,10 +49,10 @@ coeff_ph_2 = 0.08;
 coeff_y_2 = 0.05;
 proportionnal = 1;
 % Pricing cases
-V_Case1_Put_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_1, B_Y_coeff_1, B_Put_coeff_1, coeff_ph_1, coeff_y_1, 1, proportionnal);
-V_Case1_Perf_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_1, B_Y_coeff_1, B_Put_coeff_1, coeff_ph_1, coeff_y_1, 0, proportionnal);
-V_Case2_Put_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_2, B_Y_coeff_2, B_Put_coeff_2, coeff_ph_2, coeff_y_2, 1, proportionnal);
-V_Case2_Perf_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_2, B_Y_coeff_2, B_Put_coeff_2, coeff_ph_2, coeff_y_2, 0, proportionnal);
+V_Case1_Put_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_1, B_Y_coeff_1, B_Put_coeff_1, coeff_ph_1, coeff_y_1, 1, proportionnal, N);
+V_Case1_Perf_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_1, B_Y_coeff_1, B_Put_coeff_1, coeff_ph_1, coeff_y_1, 0, proportionnal, N);
+V_Case2_Put_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_2, B_Y_coeff_2, B_Put_coeff_2, coeff_ph_2, coeff_y_2, 1, proportionnal, N);
+V_Case2_Perf_Prop = Pricing_Phoenix(S0_values, Nmc, T, r, sigma, delta_t, Pi0, B_Ph_coeff_2, B_Y_coeff_2, B_Put_coeff_2, coeff_ph_2, coeff_y_2, 0, proportionnal, N);
 
 Graph_Pricing(S0_values, V_Case1_Put_Prop, V_Case1_Perf_Prop, V_Case2_Put_Prop, V_Case2_Perf_Prop);
 % ---------- End proportional barriers

@@ -1,5 +1,5 @@
 % Pricing of a Down-and-In Barrier Put Option
-Nmc = 10000;
+Nmc = 1000;
 S0 = 100;
 K = 100;
 r = 0.04;
