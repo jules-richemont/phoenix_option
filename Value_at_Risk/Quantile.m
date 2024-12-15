@@ -1,5 +1,5 @@
-% Function to calculate quantile using ordering algorithm
 function x_alpha = Quantile(X, alpha)
+    % Function to calculate quantile using ordering algorithm
     N_mc = length(X);
     X_sorted = sort(X);
     k = floor(N_mc * alpha);

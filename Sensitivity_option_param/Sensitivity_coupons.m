@@ -1,18 +1,18 @@
 % Parameters
-Pi0 = 1;            % Nominal value (100%)
-S0 = 100;           % Fixed initial stock price
-K = S0;             % Strike price
-T = 5;              % Maturity in years
-delta_t = 1;        % Observation frequency in years
-sigma = 0.3;        % Volatility
-r = 0.02;           % Risk-free rate
-N = 10000;          % Number of simulations
+Pi0 = 1;            
+S0 = 100;           
+K = S0;             
+T = 5;              
+delta_t = 1;        
+sigma = 0.3;       
+
+N = 10000;         
 timesteps = T / delta_t;
 
 % Fixed barriers
-B_Ph = 120;    % Fixed autocall barrier
-B_Y = 80;      % Fixed coupon barrier
-B_Put = 70;    % Fixed put barrier
+B_Ph = 120;    
+B_Y = 80;      
+B_Put = 70;    
 
 % Time vector
 t = delta_t * (1:timesteps);
@@ -26,8 +26,8 @@ for i = 2:timesteps
 end
 
 %% Sensitivity to C_Ph
-C_Ph_values = 0:0.5:20;    % Varying C_Ph from 0% to 20% of S0
-C_Y_fixed = 5;             % Fixed C_Y at 5% of S0
+C_Ph_values = 0:0.5:20;    
+C_Y_fixed = 5;             
 
 V_CPh = zeros(length(C_Ph_values),1);
 
@@ -63,8 +63,8 @@ for idx = 1:length(C_Ph_values)
 end
 
 %% Sensitivity to C_Y
-C_Y_values = 0:0.5:10;     % Varying C_Y from 0% to 10% of S0
-C_Ph_fixed = 10;           % Fixed C_Ph at 10% of S0
+C_Y_values = 0:0.5:10;     
+C_Ph_fixed = 10;           
 
 V_CY = zeros(length(C_Y_values),1);
 

@@ -1,18 +1,18 @@
 % Parameters
-Pi0 = 1;            % Nominal value (100%)
-S0 = 100;           % Fixed initial stock price
-K = S0;             % Strike price
-delta_t = 1;        % Observation frequency in years
-N = 100000;         % Number of simulations
+Pi0 = 1;% Nominal value (100%)
+S0 = 100;% Fixed initial stock price
+K = S0;% Strike price
+delta_t = 1;% Observation frequency in years
+N = 100000;% Number of simulations
 
 % Common parameters
-C_Ph = 0.1 * S0;    % Coupon at autocall (10% of S0)
-C_Y = 0.05 * S0;    % Yearly coupon (5% of S0)
+C_Ph = 0.1 * S0;% Coupon at autocall (10% of S0)
+C_Y = 0.05 * S0;% Yearly coupon (5% of S0)
 
 % Sensitivity ranges
-sigma_values = 0.1:0.02:0.5;     % Volatility from 0.1 to 0.5
-T_values = 1:1:10;               % Maturity from 1 to 10 years
-r_values = 0:0.005:0.05;         % Risk-free rate from 0% to 5%
+sigma_values = 0.1:0.02:0.5;% Volatility from 0.1 to 0.5
+T_values = 1:1:10;% Maturity from 1 to 10 years
+r_values = 0:0.005:0.05;% Risk-free rate from 0% to 5%
 
 %% Sensitivity to Volatility sigma
 V_sigma_caseA = zeros(length(sigma_values),1);
@@ -20,20 +20,20 @@ V_sigma_caseB = zeros(length(sigma_values),1);
 
 for idx = 1:length(sigma_values)
     sigma = sigma_values(idx);
-    T = 5;          % Fixed maturity
-    r = 0.02;       % Fixed risk-free rate
+    T = 5;% Fixed maturity
+    r = 0.02;% Fixed risk-free rate
     timesteps = T / delta_t;
     t = delta_t * (1:timesteps);
     
     % Barriers for Case a (proportional)
-    B_Ph_a = 1.2 * S0;   % 120% of S0
-    B_Y_a = 0.8 * S0;    % 80% of S0
-    B_Put_a = 0.7 * S0;  % 70% of S0
+    B_Ph_a = 1.2 * S0;% 120% of S0
+    B_Y_a = 0.8 * S0;% 80% of S0
+    B_Put_a = 0.7 * S0;% 70% of S0
     
     % Barriers for Case b (fixed)
-    B_Ph_b = 120;        % Fixed at 120
-    B_Y_b = 80;          % Fixed at 80
-    B_Put_b = 70;        % Fixed at 70
+    B_Ph_b = 120;% Fixed at 120
+    B_Y_b = 80;% Fixed at 80
+    B_Put_b = 70;% Fixed at 70
     
     % Simulate asset paths
     Z = randn(N, timesteps);

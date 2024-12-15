@@ -1,12 +1,12 @@
 % Parameters
-Pi0 = 1;            % Nominal value (100%)
-S0 = 100;           % Fixed initial stock price
-K = S0;             % Strike price
-T = 5;              % Maturity in years
-delta_t = 1;        % Observation frequency in years
-sigma = 0.3;        % Volatility
-r = 0.02;           % Risk-free rate
-N = 10000;          % Number of simulations
+Pi0 = 1;           
+S0 = 100;          
+K = S0;             
+T = 5;              
+delta_t = 1;        
+sigma = 0.3;        
+r = 0.02;           
+
 timesteps = T / delta_t;
 
 % Fixed coupons
@@ -25,9 +25,9 @@ for i = 2:timesteps
 end
 
 %% Sensitivity to B_Ph
-B_Ph_values = 100:2:140;    % Varying B_Ph from 100 to 140
-B_Y_fixed = 80;             % Fixed B_Y
-B_Put_fixed = 70;           % Fixed B_Put
+B_Ph_values = 100:2:140;    
+B_Y_fixed = 80;             
+B_Put_fixed = 70;           
 
 V_BPh = zeros(length(B_Ph_values),1);
 

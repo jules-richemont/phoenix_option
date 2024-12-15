@@ -1,22 +1,22 @@
 % Parameters
-Pi0 = 1;            % Nominal value (100%)
-S0 = 100;           % Initial stock price
-K = S0;             % Strike price
-T = 5;              % Maturity in years
-delta_t = 1;        % Observation frequency in years
-sigma = 0.3;        % Volatility
-r = 0.02;           % Risk-free rate
-N = 100000;         % Number of simulations
+Pi0 = 1;           
+S0 = 100;          
+K = S0;            
+T = 5;             
+delta_t = 1;        
+sigma = 0.3;        
+r = 0.02;           
+N = 100000;         
 timesteps = T / delta_t;
 
 % Fixed barriers
-B_Ph = 120;    % Fixed autocall barrier
-B_Y = 80;      % Fixed coupon barrier
-B_Put = 70;    % Fixed put barrier
+B_Ph = 120;    
+B_Y = 80;      
+B_Put = 70;    
 
 % Coupons
-C_Ph = 0.1 * S0;   % 10% of S0
-C_Y = 0.05 * S0;   % 5% of S0
+C_Ph = 0.1 * S0;  
+C_Y = 0.05 * S0;  
 
 % Simulate asset paths
 % Simulate asset paths

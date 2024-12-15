@@ -1,19 +1,19 @@
 % Parameters
-Pi0 = 1;            % Nominal value (100%)
-T = 5;              % Maturity in years
-delta_t = 1;        % Observation frequency in years
-r = 0.02;           % Risk-free rate
-N = 100000;         % Number of simulations
+Pi0 = 1;    % Nominal value (100%)
+T = 5; % Maturity in years
+delta_t = 1; % Observation frequency in years
+r = 0.02;   % Risk-free rate
+N = 100000; % Number of simulations
 timesteps = T / delta_t;
 
 % Fixed barriers
-B_Ph = 120;    % Fixed autocall barrier
-B_Y = 80;      % Fixed coupon barrier
-B_Put = 70;    % Fixed put barrier
+B_Ph = 120;% Fixed autocall barrier
+B_Y = 80;% Fixed coupon barrier
+B_Put = 70;% Fixed put barrier
 
 % Coupons
-C_Ph = 0.1 * 100;   % 10% of S0 = 100
-C_Y = 0.05 * 100;   % 5% of S0 = 100
+C_Ph = 0.1 * 100;% 10% of S0 = 100
+C_Y = 0.05 * 100; % 5% of S0 = 100
 
 % Small increment h
 h = 0.1;
