@@ -3,7 +3,7 @@ function Payoff = Compute_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, d
     % if put_or_perf == 0 : perf
     timesteps = length(S) - 1;
     t = delta_t * (1:timesteps);
-    PV = 0; % Présent Value
+    PV = 0; % Present Value
     autocall = false;
 
     % Boucle sur les barrières intermédiaires
@@ -12,14 +12,14 @@ function Payoff = Compute_Payoff(S, K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, d
             % Autocall déclenché
             PV = (Pi0 + C_Ph) * exp(-r * t(i));
             autocall = true;
-            break;
+            break; % We stop the ireration as the autocall is triggered
         elseif S(i) >= B_Y && S(i) <= B_Ph
-            % Paiement des coupons
+            % Paiment of the coupon
             PV = PV + C_Y * exp(-r * t(i));
         end
     end
 
-    if ~autocall
+    if ~autocall % If the autocall is not triggered, ie the autocall barrier is not crossed
         % Payoff à maturité
         S_N = S(end);
         if S_N > B_Ph

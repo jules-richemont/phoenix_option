@@ -14,8 +14,6 @@ function [V] = Pricing_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_
 
         % Initialize payoffs
         Payoff = zeros(N, 1);
-
-
         timesteps = T / delta_t;
         % Version 1 
         S = Simulate_Trajectories(S0, r, sigma, T, timesteps, N);
@@ -29,7 +27,6 @@ function [V] = Pricing_Phoenix(S0_values, N, T, r, sigma, delta_t, Pi0, B_Ph, B_
                 B_Y = B_Y * S0;
                 B_Put = B_Put * S0;
             end
-
             % Compute Payoffs
             Payoff(n) = Compute_Payoff(S(n,:), K, Pi0, C_Ph, C_Y, T, r, B_Ph, B_Y, B_Put, delta_t, put_or_perf);
         end
